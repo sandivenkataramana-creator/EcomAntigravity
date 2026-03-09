@@ -1,0 +1,191 @@
+.profile-page {
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.profile-sidebar {
+    padding: 0;
+    overflow: hidden;
+    position: sticky;
+    top: 100px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--dark-2);
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.greeting {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: block;
+}
+
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-nav button,
+.profile-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.profile-nav button:hover,
+.profile-nav a:hover,
+.profile-nav .active {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--primary-light);
+}
+
+.profile-nav .active {
+    border-left: 3px solid var(--primary);
+    background: rgba(40, 116, 240, 0.05);
+}
+
+.profile-content {
+    padding: 32px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-form label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.profile-form .form-control {
+    margin-top: 8px;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.wishlist-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.wishlist-item {
+    padding: 16px;
+    position: relative;
+    text-align: center;
+}
+
+.wishlist-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.wishlist-item h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.wishlist-item .price {
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 2;
+}
+
+.remove-btn:hover {
+    background: var(--danger);
+}
+
+.wishlist-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.alert-info {
+    background: rgba(40, 116, 240, 0.1);
+    color: var(--primary-light);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(40, 116, 240, 0.2);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-sidebar {
+        position: static;
+    }
+}

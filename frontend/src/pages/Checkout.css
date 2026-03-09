@@ -1,0 +1,223 @@
+.checkout-page {
+    padding-top: 90px;
+    padding-bottom: 40px;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.checkout-step {
+    overflow: hidden;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--primary);
+    padding: 16px 24px;
+    color: #fff;
+}
+
+.step-num {
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.step-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.step-body {
+    padding: 24px;
+}
+
+.address-card {
+    display: flex;
+    gap: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--dark-3);
+    position: relative;
+}
+
+.address-card.selected {
+    border-color: var(--primary);
+    background: rgba(40, 116, 240, 0.05);
+}
+
+.address-card input {
+    margin-top: 4px;
+    accent-color: var(--primary);
+}
+
+.address-info strong {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.addr-type {
+    font-size: 11px;
+    background: var(--glass);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.address-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.addr-phone {
+    font-weight: 600;
+    margin-top: 8px;
+    color: var(--text-primary) !important;
+}
+
+.check-icon {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: var(--primary);
+}
+
+.new-address-form {
+    background: var(--dark-2);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.new-address-form h4 {
+    font-size: 15px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payment-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--dark-3);
+}
+
+.payment-card.selected {
+    border-color: var(--primary);
+    background: rgba(40, 116, 240, 0.05);
+}
+
+.payment-card input {
+    accent-color: var(--primary);
+}
+
+.payment-card span {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.checkout-summary {
+    padding: 24px;
+    position: sticky;
+    top: 90px;
+}
+
+.checkout-summary h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.summary-item span:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+}
+
+.mt-2 {
+    margin-top: 8px;
+}
+
+.mt-3 {
+    margin-top: 16px;
+}
+
+.mt-4 {
+    margin-top: 24px;
+}
+
+.ml-2 {
+    margin-left: 8px;
+}
+
+.alert-danger {
+    color: #fff;
+    background: var(--danger);
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-summary {
+        position: static;
+    }
+}
