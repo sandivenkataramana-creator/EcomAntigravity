@@ -1,61 +1,57 @@
+# --------------------
 # Python
+# --------------------
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+
+# Virtual environments
 venv/
+env/
 ENV/
 
-# Node
-node_modules/
+# Python build
+build/
 dist/
+.eggs/
+*.egg-info/
+
+# --------------------
+# Node
+# --------------------
+node_modules/
 dist-ssr/
 *.local
 
-# Environment variables
+# --------------------
+# Environment Variables
+# --------------------
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
+# --------------------
 # Logs
+# --------------------
 *.log
-backend_error_log.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS
+# --------------------
+# OS Files
+# --------------------
 .DS_Store
 Thumbs.db
-.idea/
-.vscode/
 
-# Project specific
+# --------------------
+# IDE
+# --------------------
+.vscode/
+.idea/
+
+# --------------------
+# Project Files
+# --------------------
 uploads/
-schema_report.txt
-api_test_results.txt
-schema_output.txt
-seed_psycopg2.py
-inspect_db_schema.py
-inspect_db_schema_v2.py
-inspect_schema.py
-migrate_db.py
-test_api_locally.py
-test_api_stdlib.py

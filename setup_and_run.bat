@@ -17,9 +17,9 @@ if not exist venv (
     python -m venv venv
 )
 echo Installing backend dependencies...
-venv\Scripts\pip install -q -r requirements.txt
+venv\Scripts\pip install -q -r "%PROJECT_ROOT%backend\requirements.txt"
 echo Seeding database...
-venv\Scripts\python seed.py
+venv\Scripts\python "%PROJECT_ROOT%backend\seed.py"
 cd ..
 
 :: STEP 2: Frontend Setup
