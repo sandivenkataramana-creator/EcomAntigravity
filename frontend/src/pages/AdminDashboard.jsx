@@ -11,6 +11,7 @@ export default function AdminDashboard() {
     const [orders, setOrders] = useState([])
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
+    const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
 
     // Product/Category form state
@@ -39,12 +40,14 @@ export default function AdminDashboard() {
                 adminAPI.stats(),
                 adminAPI.orders({ page: 1, per_page: 20 }),
                 productsAPI.list({ per_page: 50 }),
-                categoriesAPI.list()
+                categoriesAPI.list(),
+                usersAPI.adminListUsers()
             ])
             setStats(statsRes.data)
             setOrders(ordersRes.data.orders)
             setProducts(productsRes.data.products)
             setCategories(catsRes.data)
+            setUsers(usersRes.data)
         } catch (err) {
             console.error(err)
         } finally {
@@ -63,6 +66,15 @@ export default function AdminDashboard() {
             setOrders(orders.map(o => o.id === id ? { ...o, status } : o))
         } catch (e) {
             alert('Failed to update status')
+        }
+    }
+
+    const toggleUserActive = async (userId) => {
+        try {
+            await usersAPI.adminToggleUser(userId)
+            setUsers(users.map(u => u.id === userId ? { ...u, is_active: !u.is_active } : u))
+        } catch (e) {
+            alert('Failed to toggle user status')
         }
     }
 
@@ -267,7 +279,7 @@ export default function AdminDashboard() {
 
             {/* Tabs */}
             <div style={{ display: 'flex', gap: 20, marginBottom: 20, borderBottom: '1px solid var(--border)' }}>
-                {['orders', 'products', 'categories'].map(t => (
+                {['orders', 'products', 'categories', 'users'].map(t => (
                     <button
                         key={t}
                         onClick={() => setActiveTab(t)}
@@ -425,6 +437,54 @@ export default function AdminDashboard() {
                                             </tr>
                                         ))}
                                     </React.Fragment>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )}
+
+            {activeTab === 'users' && (
+                <div className="card">
+                    <h2 style={{ fontSize: 18, marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid var(--border)' }}>Manage Users</h2>
+                    <div style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                            <thead>
+                                <tr style={{ borderBottom: '1px solid var(--border)', color: 'var(--text-secondary)', fontSize: 14 }}>
+                                    <th style={{ padding: '12px 16px', fontWeight: 600 }}>Name</th>
+                                    <th style={{ padding: '12px 16px', fontWeight: 600 }}>Email</th>
+                                    <th style={{ padding: '12px 16px', fontWeight: 600 }}>Role</th>
+                                    <th style={{ padding: '12px 16px', fontWeight: 600 }}>Status</th>
+                                    <th style={{ padding: '12px 16px', fontWeight: 600 }}>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map(u => (
+                                    <tr key={u.id} style={{ borderBottom: '1px solid var(--glass-border)' }}>
+                                        <td style={{ padding: '16px' }}>{u.name}</td>
+                                        <td style={{ padding: '16px' }}>{u.email}</td>
+                                        <td style={{ padding: '16px', textTransform: 'capitalize' }}>{u.role}</td>
+                                        <td style={{ padding: '16px' }}>
+                                            <span style={{
+                                                fontSize: 12, fontWeight: 700, padding: '4px 8px', borderRadius: 4,
+                                                background: u.is_active ? 'rgba(38,165,65,0.1)' : 'rgba(255,97,97,0.1)',
+                                                color: u.is_active ? 'var(--success)' : 'var(--danger)'
+                                            }}>
+                                                {u.is_active ? 'Active' : 'Inactive'}
+                                            </span>
+                                        </td>
+                                        <td style={{ padding: '16px' }}>
+                                            {u.id !== user.id && (
+                                                <button
+                                                    onClick={() => toggleUserActive(u.id)}
+                                                    className={`btn btn-sm ${u.is_active ? 'btn-outline-danger' : 'btn-outline-success'}`}
+                                                    style={{ padding: '4px 8px', fontSize: 12 }}
+                                                >
+                                                    {u.is_active ? 'Deactivate' : 'Activate'}
+                                                </button>
+                                            )}
+                                        </td>
+                                    </tr>
                                 ))}
                             </tbody>
                         </table>

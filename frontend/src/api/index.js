@@ -103,6 +103,7 @@ export const usersAPI = {
     addToWishlist: (productId) => api.post(`/users/me/wishlist/${productId}`),
     removeFromWishlist: (productId) => api.delete(`/users/me/wishlist/${productId}`),
     adminListUsers: () => api.get('/users/admin/all'),
+    adminToggleUser: (userId) => api.put(`/users/admin/${userId}/toggle-active`),
 }
 
 // Admin stats

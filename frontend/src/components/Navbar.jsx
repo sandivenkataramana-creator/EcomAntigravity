@@ -130,7 +130,7 @@ export default function Navbar() {
                                     </div>
                                 )}
                             </div>
-                        ))}<span className="logo-text">Site <span>Under Maintenance</span></span>
+                        ))}
                     </nav>
                 </div>
             </div>
