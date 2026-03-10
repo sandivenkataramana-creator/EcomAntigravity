@@ -13,7 +13,6 @@ ENV/
 
 # Python build
 build/
-dist/
 .eggs/
 *.egg-info/
 
@@ -21,7 +20,6 @@ dist/
 # Node
 # --------------------
 node_modules/
-dist-ssr/
 *.local
 
 # --------------------
