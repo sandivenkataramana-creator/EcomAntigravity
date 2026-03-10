@@ -15,9 +15,8 @@ services:
         generateValue: true
       - key: ALGORITHM
         value: HS256
-
-    runtime: python
-    runtimeVersion: 3.11.9
+      - key: PYTHON_VERSION
+        value: 3.11.9
 
 databases:
   - name: ecom-db
