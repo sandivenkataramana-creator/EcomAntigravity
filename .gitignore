@@ -12,7 +12,6 @@ env/
 ENV/
 
 # Python build
-build/
 .eggs/
 *.egg-info/
 
