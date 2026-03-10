@@ -58,9 +58,13 @@ import traceback
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
-    with open("d:/ecomantigravity/backend_error_log.txt", "a") as f:
-        f.write(f"\n--- ERROR AT {datetime.now()} ---\n")
-        f.write(traceback.format_exc())
+    log_file = BASE_DIR / "error_log.txt"
+    try:
+        with open(log_file, "a") as f:
+            f.write(f"\n--- ERROR AT {datetime.now()} ---\n")
+            f.write(traceback.format_exc())
+    except Exception:
+        pass  # Don't crash if logging fails
     from fastapi.responses import JSONResponse
     content = {"detail": "Internal Server Error"}
     if os.getenv("DEBUG") == "True":
